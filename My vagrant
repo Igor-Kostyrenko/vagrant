@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "bento/ubuntu-22.04"
+
+  config.vm.network "public_network" , bridge: "en1"
+
+  config.vm.define "softserve"
+
+        config.vm.provider "softserve" do |vb|
+               vb.name = "softserve_vm"
+			         vb.cpus = 2
+			         vb.memory = "1024"
+        end
+
+   config.vm.hostname = "softserve"
+
+   #config.vm.provision "shell" , inline: <<-SHELL
+    #     apt-get install nginx -y
+   #SHELL
+
+end
